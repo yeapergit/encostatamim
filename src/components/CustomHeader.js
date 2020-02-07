@@ -6,7 +6,7 @@ const CustomHeader = () => {
   return (
     <div>
       <Header as="h2" icon textAlign="center">
-        <Image src={headerImg} />
+       {/* <Image src={headerImg} /> */}
       </Header>
     </div>
   );

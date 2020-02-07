@@ -1,70 +1,47 @@
-import React from "react";
-import { Button, Checkbox, Icon, Table,Pagination } from 'semantic-ui-react'
+import React, { useState, useEffect } from "react";
+import { Button, Checkbox, Icon, Table, Pagination } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-class CustomTable extends React.Component {
-  render() {
-    return (
-      <Table compact fixed>
-        <Table.Header fullWidth>
-          <Table.Row>
-            <Table.HeaderCell>Nome</Table.HeaderCell>
-            <Table.HeaderCell>Nif</Table.HeaderCell>
-            <Table.HeaderCell>Número Sócio</Table.HeaderCell>
-            <Table.HeaderCell/>
-          </Table.Row>
-        </Table.Header>
+function CustomTable() {
+  const [users, setUsers] = useState([]);
 
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>John Lilki</Table.Cell>
-            <Table.Cell>123456789</Table.Cell>
-            <Table.Cell>19823798237</Table.Cell>
+  useEffect(() => {
+    axios.get("/api/socios").then(response => setUsers(response.data.socios));
+  }, []);
+
+  return (
+    <Table compact fixed>
+      <Table.Header fullWidth>
+        <Table.Row>
+          <Table.HeaderCell>Nome</Table.HeaderCell>
+          <Table.HeaderCell>Nif</Table.HeaderCell>
+          <Table.HeaderCell>Número Sócio</Table.HeaderCell>
+          <Table.HeaderCell />
+        </Table.Row>
+      </Table.Header>
+
+      <Table.Body>
+        {users.map(user => (
+          <Table.Row key={user.id}>
+            <Table.Cell>{user.name}</Table.Cell>
+            <Table.Cell>{user.number}</Table.Cell>
+            <Table.Cell>{user.nif}</Table.Cell>
             <Table.Cell>
-              <Button primary>Ver</Button>
+              <Link to={`/${user.id}`}>
+                <Button primary>Ver</Button>
+              </Link>
+
               <Button secondary>Editar</Button>
             </Table.Cell>
           </Table.Row>
-        </Table.Body>
+        ))}
+      </Table.Body>
 
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>John Lilki</Table.Cell>
-            <Table.Cell>123456789</Table.Cell>
-            <Table.Cell>19823798237</Table.Cell>
-            <Table.Cell>
-              <Button primary>Ver</Button>
-              <Button secondary>Editar</Button>
-            </Table.Cell>
-          </Table.Row>
-        </Table.Body>
-
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>John Lilki</Table.Cell>
-            <Table.Cell>123456789</Table.Cell>
-            <Table.Cell>19823798237</Table.Cell>
-            <Table.Cell>
-              <Button primary>Ver</Button>
-              <Button secondary>Editar</Button>
-            </Table.Cell>
-          </Table.Row>
-        </Table.Body>
-
-                <Table.Body>
-          <Table.Row>
-            <Table.Cell>John Lilki</Table.Cell>
-            <Table.Cell>123456789</Table.Cell>
-            <Table.Cell>19823798237</Table.Cell>
-            <Table.Cell>
-              <Button primary>Ver</Button>
-              <Button secondary>Editar</Button>
-            </Table.Cell>
-          </Table.Row>
-        </Table.Body>
-
-        <Table.Footer fullWidth>
-          <Table.Row>
-            <Table.HeaderCell colSpan="4">
+      <Table.Footer fullWidth>
+        <Table.Row>
+          <Table.HeaderCell colSpan="4">
+            <Link to="/new">
               <Button
                 floated="right"
                 icon
@@ -74,12 +51,12 @@ class CustomTable extends React.Component {
               >
                 <Icon name="user" /> Adicionar Pessoa
               </Button>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
-    );
-  }
+            </Link>
+          </Table.HeaderCell>
+        </Table.Row>
+      </Table.Footer>
+    </Table>
+  );
 }
 
 export default CustomTable;

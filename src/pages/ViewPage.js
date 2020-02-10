@@ -10,7 +10,7 @@ const ViewPage = props => {
     axios
       .get(`/api/socios/${props.match.params.id}`)
       .then(response => setUser(response.data.socio));
-  }, []);
+  }, [props.match.params.id]);
 
   return (
     <div>

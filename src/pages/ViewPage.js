@@ -2,16 +2,22 @@ import React, { useState, useEffect } from "react";
 import CustomTable from "../components/CustomTable";
 import axios from "axios";
 
-const ViewPage = () => {
+const ViewPage = props => {
   const [user, setUser] = useState({});
+  console.log(props);
 
   useEffect(() => {
     axios
-      .get(`/api/socios/${this.props.match.params.id}`)
-      .then(response => console.log({ response }));
-  });
+      .get(`/api/socios/${props.match.params.id}`)
+      .then(response => setUser(response.data.socio));
+  }, []);
 
-  return <div>aSDASDASD</div>;
-}
+  return (
+    <div>
+      {user.name}<br></br>
+      {user.id}
+    </div>
+  );
+};
 
 export default ViewPage;

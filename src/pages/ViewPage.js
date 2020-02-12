@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
-import CustomTable from "../components/CustomTable";
-import axios from "axios";
+import { getUserDetails } from "../actions/";
+import { connect } from "react-redux";
 
 const ViewPage = props => {
-  const [user, setUser] = useState({});
   console.log(props);
 
   useEffect(() => {
-    axios
-      .get(`/api/socios/${props.match.params.id}`)
-      .then(response => setUser(response.data.socio));
-  }, [props.match.params.id]);
+    props.getUserDetails(props.match.params.id);
+  }, [props.match.params.id]); 
 
   return (
     <div>
-      {user.name}<br></br>
-      {user.id}
+      {props.user.name}
+      <br></br>
+      {props.user.id}
     </div>
   );
 };
 
-export default ViewPage;
+const mapStateToProps = state =>{
+ return {
+   user : state.details,
+ }
+};
+
+export default connect(mapStateToProps, { getUserDetails })(ViewPage);

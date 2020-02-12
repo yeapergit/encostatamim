@@ -28,7 +28,7 @@ function CustomTable() {
             <Table.Cell>{user.number}</Table.Cell>
             <Table.Cell>{user.nif}</Table.Cell>
             <Table.Cell>
-              <Link to={`/${user.id}`}>
+              <Link to={`/user/${user.id}`}>
                 <Button primary>Ver</Button>
               </Link>
 
@@ -50,6 +50,17 @@ function CustomTable() {
                 size="small"
               >
                 <Icon name="user" /> Adicionar Pessoa
+              </Button>
+            </Link>
+            <Link to="/upload">
+              <Button
+                floated="right"
+                icon
+                labelPosition="left"
+                primary
+                size="small"
+              >
+                <Icon name="upload" /> Upload
               </Button>
             </Link>
           </Table.HeaderCell>

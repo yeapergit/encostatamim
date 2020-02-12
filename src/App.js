@@ -6,7 +6,7 @@ import InitPage from "./pages/InitPage";
 import CreatePage from "./pages/CreatePage";
 import ViewPage from "./pages/ViewPage";
 import EditPage from "./pages/EditPage";
-import ListPage from "./pages/ListPage";
+import UploadPage from "./pages/UploadPage";
 import history from "./history";
 
 const App = () => {
@@ -15,11 +15,11 @@ const App = () => {
       <Router history={history}>
         <CustomHeader />
         <Switch>
-          <Route path="/" exact component={InitPage}></Route>
-          <Route path="/list" exact component={ListPage}></Route>
-          <Route path="/new" exact component={CreatePage}></Route>
-          <Route path="/edit/:id" exact component={EditPage}></Route>
-          <Route path="/users/:id" exact component={ViewPage}></Route>
+          <Route exact path="/" component={InitPage}></Route>
+          <Route exact path="/new" component={CreatePage}></Route>
+          <Route exact path="/edit/:id" component={EditPage}></Route>
+          <Route exact path="/user/:id" component={ViewPage}></Route>
+          <Route exact path="/upload" component={UploadPage}></Route>
         </Switch>
       </Router>
     </div>

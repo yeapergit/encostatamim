@@ -30,31 +30,36 @@ new Server({
   seeds(server) {
     server.create("socio", {
       id: 1,
-      name: "Jorge 1",
+      firstName: "Jorge 1",
+      lastName: "Ultimo 1",
       number: "123456",
       nif: "123"
     });
     server.create("socio", {
       id: 2,
-      name: "Jorge 2",
+      firstName: "Jorge 2",
+      lastName: "Ultimo 2",
       number: "567889",
       nif: "456"
     });
     server.create("socio", {
       id: 3,
-      name: "Jorge 3",
+      firstName: "Jorge 3",
+      lastName: "Ultimo 3",
       number: "546456",
       nif: "666"
     });
     server.create("socio", {
       id: 4,
-      name: "Jorge 4",
+      firstName: "Jorge 4",
+      lastName: "Ultimo 4",
       number: "099099",
       nif: "777"
     });
     server.create("socio", {
       id: 5,
-      name: "Jorge 5",
+      firstName: "Jorge 5",
+      lastName: "Ultimo 5",
       number: "666666",
       nif: "188"
     });

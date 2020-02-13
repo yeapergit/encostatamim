@@ -17,11 +17,18 @@ const CustomTable = ({ users }) => {
       <Table.Body>
         {users.map(user => (
           <Table.Row key={user.id}>
-            <Table.Cell>{user.name}</Table.Cell>
+            <Table.Cell>{user.firstName}</Table.Cell>
             <Table.Cell>{user.number}</Table.Cell>
             <Table.Cell>{user.nif}</Table.Cell>
             <Table.Cell>
-              <Link to={`/user/${user.id}`}>
+              <Link
+                to={{
+                  pathname: `/users/${user.id}`,
+                  state: {
+                    isEditable: false
+                  }
+                }} 
+              >
                 <Button primary>Ver</Button>
               </Link>
 

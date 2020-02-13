@@ -6,9 +6,10 @@ import { Server, Model } from "miragejs";
 import { createStore, compose, applyMiddleware } from "redux";
 import rootReducer from "./reducers";
 import { Provider } from "react-redux";
-import reduxThunk from 'redux-thunk';
+import reduxThunk from "redux-thunk";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(reduxThunk))

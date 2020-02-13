@@ -1,11 +1,12 @@
 import React from "react";
-import CustomTable from "../components/CustomTable";
+import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
 const InitPage = () => {
   return (
-    <div className="ui container">
-      <CustomTable />
-    </div>
+    <Link to="/list">
+      <Button>clickaaaaaaaaaaaaaaa crl</Button>
+    </Link>
   );
 };
 

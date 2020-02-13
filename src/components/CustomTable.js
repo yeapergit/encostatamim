@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Checkbox, Icon, Table, Pagination } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-function CustomTable() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    axios.get("/api/socios").then(response => setUsers(response.data.socios));
-  }, []);
-
+const CustomTable = ({ users }) => {
   return (
     <Table compact fixed>
       <Table.Header fullWidth>
@@ -68,6 +61,6 @@ function CustomTable() {
       </Table.Footer>
     </Table>
   );
-}
+};
 
 export default CustomTable;

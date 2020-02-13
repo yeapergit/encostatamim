@@ -1,6 +1,4 @@
-export default (state = {}, action) => {
-  console.log("users", state);
-  console.log(action.payload);
+export default (state = [], action) => {
   switch (action.type) {
     case "GET_USERS":
       return action.payload;

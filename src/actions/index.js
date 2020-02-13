@@ -4,6 +4,8 @@ import { GET_USERS, GET_USER_DETAILS } from "./actionTypes";
 export const getUserDetails = id => async dispatch => {
   const request = axios.get(`/api/socios/${id}`);
 
+  console.log(request.then(response => response.data.socio));
+
   request
     .then(response => {
       return response.data.socio;

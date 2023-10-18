@@ -5,7 +5,7 @@ import { Button } from "semantic-ui-react";
 const InitPage = () => {
   return (
     <Link to="/list">
-      <Button>clickaaaaaaaaaaaaaaa crl</Button>
+      <Button>Click 2 Enter</Button>
     </Link>
   );
 };

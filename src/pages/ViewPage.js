@@ -4,13 +4,12 @@ import { connect } from "react-redux";
 
 import {
   Button,
-  Checkbox,
   Form,
   Input,
-  Radio,
   Select,
   TextArea
 } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const options = [
   { key: "m", text: "Masculino", value: "male" },
@@ -26,7 +25,7 @@ const ViewPage = props => {
 
   useEffect(() => {
     props.getUserDetails(props.match.params.id);
-  }, [props.match.params.id]);
+  }, [props, props.match.params.id]);
 
   /*return (
     <div>
@@ -37,7 +36,7 @@ const ViewPage = props => {
   ); */
 
   return (
-    <Form>
+    <><Form>
       <Form.Group widths="equal">
         <Form.Field>
           <label>Primeiro Nome</label>
@@ -45,14 +44,13 @@ const ViewPage = props => {
         </Form.Field>
         <Form.Field>
           <label>Último Nome</label>
-          <Input value={props.user.lastName}></Input>
+          <Input disabled={!isEditable} value={props.user.lastName}></Input>
         </Form.Field>
         <Form.Field
           control={Select}
           label="Género"
           options={options}
-          placeholder="Género"
-        />
+          placeholder="Género" />
       </Form.Group>
       <Form.Group inline>
         <Form.Field>
@@ -64,9 +62,11 @@ const ViewPage = props => {
           <Input disabled={!isEditable} value={props.user.number}></Input>
         </Form.Field>
       </Form.Group>
-      <Form.Field control={TextArea} label="Observações" placeholder="" />
-      <Form.Field control={Button}>Submeter</Form.Field>
-    </Form>
+      <Form.Field disabled={!isEditable} control={TextArea} label="Observações" placeholder="" />
+      <Form.Field disabled={!isEditable} control={Button}>Submeter</Form.Field>
+    </Form><Link to="/list">
+        <Button secondary>Voltar à tabela</Button>
+      </Link></>
   );
 };
 

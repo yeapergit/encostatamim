@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Button,
-  Checkbox,
   Form,
   Input,
   Radio,
@@ -22,24 +22,22 @@ class CreatePage extends React.Component {
   render() {
     const { value } = this.state
     return (
+      <>
       <Form>
         <Form.Group widths='equal'>
           <Form.Field
             control={Input}
             label='Primeiro Nome'
-            placeholder='Primeiro Nome'
-          />
+            placeholder='Primeiro Nome' />
           <Form.Field
             control={Input}
             label='Ultimo Nome'
-            placeholder='Ultimo Nome'
-          />
+            placeholder='Ultimo Nome' />
           <Form.Field
             control={Select}
             label='Género'
             options={options}
-            placeholder='Género'
-          />
+            placeholder='Género' />
         </Form.Group>
         <Form.Group inline>
           <label>Quantity</label>
@@ -48,30 +46,30 @@ class CreatePage extends React.Component {
             label='One'
             value='1'
             checked={value === '1'}
-            onChange={this.handleChange}
-          />
+            onChange={this.handleChange} />
           <Form.Field
             control={Radio}
             label='Two'
             value='2'
             checked={value === '2'}
-            onChange={this.handleChange}
-          />
+            onChange={this.handleChange} />
           <Form.Field
             control={Radio}
             label='Three'
             value='3'
             checked={value === '3'}
-            onChange={this.handleChange}
-          />
+            onChange={this.handleChange} />
         </Form.Group>
         <Form.Field
           control={TextArea}
           label='Observações'
-          placeholder=''
-        />
+          placeholder='' />
         <Form.Field control={Button}>Submeter</Form.Field>
-      </Form>
+      </Form>          
+      <Link to="/list">
+          <Button secondary>Voltar à tabela</Button>
+      </Link>
+      </>
     )
   }
 };

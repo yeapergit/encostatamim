@@ -8,6 +8,7 @@ import ViewPage from "./pages/ViewPage";
 import EditPage from "./pages/EditPage";
 import UploadPage from "./pages/UploadPage";
 import history from "./history";
+import ListPage from "./pages/ListPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <CustomHeader />
         <Switch>
           <Route exact path="/" component={InitPage}></Route>
+          <Route exact path="/list" component={ListPage}></Route>
           <Route exact path="/new" component={CreatePage}></Route>
           <Route exact path="/edit/:id" component={EditPage}></Route>
           <Route exact path="/user/:id" component={ViewPage}></Route>
